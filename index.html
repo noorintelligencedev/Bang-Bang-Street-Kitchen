@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bang Bang Street Kitchen — Asian Street Food Collection | Shoreditch</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#12100E;--card:#1B1815;--ink:#F2EFE6;--mut:#A39E90;--line:#2E2A24;--acc:#C6F135;--hot:#FF5C33;--r:14px}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Space Grotesk',sans-serif;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased}
+body.drawer-open{overflow:hidden}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+a{color:inherit;text-decoration:none}
+img,iframe{max-width:100%}
+.container{max-width:1100px;margin:0 auto;padding:0 22px}
+section{padding:76px 0;scroll-margin-top:84px}
+.eyebrow{display:block;font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--acc);margin-bottom:10px}
+.sec-head{max-width:640px;margin:0 auto 40px;text-align:center}
+.sec-head h2{font-size:clamp(28px,3.6vw,40px);font-weight:700;text-transform:uppercase;letter-spacing:-.01em}
+.sec-head p{margin-top:10px;color:var(--mut);font-size:15px;line-height:1.65}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-weight:700;font-size:15px;padding:14px 26px;border-radius:10px;transition:.25s;border:2px solid transparent}
+.btn.primary{background:var(--acc);color:#12100E;box-shadow:0 0 28px -6px rgba(198,241,53,.45)}
+.btn.primary:hover{transform:translateY(-2px);box-shadow:0 0 36px -4px rgba(198,241,53,.6)}
+.btn.ghost{border-color:var(--line);background:var(--card);color:var(--ink)}
+.btn.ghost:hover{border-color:var(--acc)}
+.btn.big{width:100%;padding:15px}
+.announce{background:var(--hot);color:#12100E;text-align:center;font-size:13px;font-weight:700;padding:9px 14px}
+header{position:sticky;top:0;z-index:50;background:rgba(18,16,14,.85);backdrop-filter:blur(12px);transition:.3s;border-bottom:1px solid var(--line)}
+header.scrolled{box-shadow:0 8px 30px -12px rgba(0,0,0,.8)}
+nav{display:flex;align-items:center;justify-content:space-between;gap:16px;height:70px}
+.logo{font-weight:700;font-size:19px;display:flex;gap:8px;align-items:center;text-transform:uppercase}
+.logo b{color:var(--acc);text-shadow:0 0 18px rgba(198,241,53,.5)}
+.nav-links{display:flex;gap:24px;font-weight:500;font-size:14.5px}
+.nav-links a:hover{color:var(--acc)}
+.cart-btn{position:relative;width:44px;height:44px;border-radius:10px;background:var(--acc);color:#12100E;font-size:18px;display:grid;place-items:center;font-weight:700}
+.badge{position:absolute;top:-6px;right:-6px;min-width:19px;height:19px;border-radius:999px;background:var(--hot);color:#fff;font-size:11px;font-weight:700;display:none;place-items:center;padding:0 5px}
+.burger{display:none;width:44px;height:44px;border-radius:10px;border:1.5px solid var(--line);font-size:18px;background:var(--card)}
+.hero{padding:60px 0 76px}
+.hero .container{display:grid;grid-template-columns:1.05fr .95fr;gap:52px;align-items:center}
+.kicker{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--hot);border:1.5px solid var(--hot);padding:7px 14px;border-radius:8px;margin-bottom:18px}
+.hero h1{font-size:clamp(36px,5vw,58px);font-weight:700;line-height:1.03;text-transform:uppercase;letter-spacing:-.01em}
+.hero h1 span{color:var(--acc);text-shadow:0 0 26px rgba(198,241,53,.4)}
+.hero .sub{margin:18px 0 26px;font-size:16px;color:var(--mut);max-width:500px;line-height:1.7}
+.cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:20px}
+.status{display:inline-flex;align-items:center;gap:8px;font-size:13.5px;font-weight:600;background:var(--card);border:1.5px solid var(--line);padding:8px 14px;border-radius:8px}
+.status i{width:9px;height:9px;border-radius:50%;background:#777}
+.status.open i{background:var(--acc)}.status.closed i{background:var(--hot)}
+.neon{position:relative;background:var(--card);border:1.5px solid var(--line);border-radius:24px;padding:44px 20px;display:grid;place-items:center;min-height:340px;overflow:hidden}
+.neon::before{content:'';position:absolute;inset:-40%;background:conic-gradient(from 0deg,transparent 70%,rgba(198,241,53,.14),transparent 90%);animation:spin 8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.neon .big{position:relative;font-size:120px;animation:bob 5s ease-in-out infinite;filter:drop-shadow(0 0 30px rgba(198,241,53,.35))}
+@keyframes bob{50%{transform:translateY(-12px)}}
+.float{position:absolute;font-size:34px;animation:bob 6s ease-in-out infinite;filter:drop-shadow(0 0 14px rgba(255,92,51,.4))}
+.f1{top:10%;left:12%}.f2{top:18%;right:12%;animation-delay:1s}.f3{bottom:12%;left:16%;animation-delay:.5s}.f4{bottom:18%;right:14%;animation-delay:1.4s}
+.combo{background:linear-gradient(100deg,#1B1815,#241F14);border:1.5px solid var(--line);border-radius:18px;padding:24px;margin-bottom:18px;display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.combo .em{font-size:40px}
+.combo h3{font-size:18px;text-transform:uppercase}
+.combo p{color:var(--mut);font-size:14px;margin-top:4px}
+.combo .pr{margin-left:auto;background:var(--acc);color:#12100E;font-weight:700;padding:8px 16px;border-radius:8px;font-size:14px;white-space:nowrap}
+.pills{display:flex;gap:8px;overflow-x:auto;padding-bottom:6px;margin-bottom:26px;scrollbar-width:none}
+.pills::-webkit-scrollbar{display:none}
+.pill{white-space:nowrap;padding:10px 18px;border-radius:10px;border:1.5px solid var(--line);background:var(--card);font-weight:600;font-size:13.5px;transition:.2s;text-transform:uppercase}
+.pill:hover{border-color:var(--acc);color:var(--acc)}
+.pill.active{background:var(--acc);border-color:var(--acc);color:#12100E}
+.menu-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px}
+.dish{background:var(--card);border:1.5px solid var(--line);border-radius:var(--r);padding:18px;display:flex;flex-direction:column;transition:.25s}
+.dish:hover{transform:translateY(-5px);border-color:var(--acc);box-shadow:0 0 30px -10px rgba(198,241,53,.25)}
+.dish-top{display:flex;justify-content:space-between;gap:10px;align-items:baseline}
+.dish-top h4{font-size:16.5px;font-weight:700;text-transform:uppercase;letter-spacing:.01em}
+.price{font-weight:700;color:var(--acc);white-space:nowrap;font-size:16px}
+.dish-desc{font-size:13px;color:var(--mut);line-height:1.55;margin:6px 0 12px;flex:1}
+.spice{display:flex;gap:6px;margin-bottom:12px}
+.spice button{padding:6px 12px;border-radius:8px;border:1.5px solid var(--line);font-size:12px;font-weight:600;color:var(--mut)}
+.spice button.on{border-color:var(--hot);color:var(--hot);background:rgba(255,92,51,.1)}
+.tag{font-size:10.5px;font-weight:700;padding:3px 9px;border-radius:6px;background:#242019;color:var(--mut);margin-right:5px;text-transform:uppercase}
+.tag.vg{color:var(--acc)}
+.add{width:100%;padding:11px;border-radius:10px;background:var(--ink);color:#12100E;font-weight:700;font-size:13.5px;transition:.2s;text-transform:uppercase}
+.add:hover{background:var(--acc)}
+.visit-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:22px}
+.vcard,.map-wrap{background:var(--card);border:1.5px solid var(--line);border-radius:18px;overflow:hidden}
+.vcard{padding:26px}
+.hrow{display:flex;align-items:baseline;gap:10px;font-size:14px;padding:7px 0;color:var(--mut)}
+.hrow i{flex:1;border-bottom:2px dotted var(--line)}
+.hrow b{color:var(--ink)}
+.hrow.today,.hrow.today b{color:var(--acc)}
+.map-wrap iframe{width:100%;height:320px;border:0;display:block;min-height:320px;filter:grayscale(.3) contrast(1.05)}
+.map-foot{padding:14px 18px;border-top:1px solid var(--line);font-size:13.5px;font-weight:600;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.map-foot a{color:var(--acc);font-weight:700}
+.contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}
+.ccard{background:var(--card);border:1.5px solid var(--line);border-radius:var(--r);padding:26px 22px;text-align:center}
+.ccard .ico{width:54px;height:54px;margin:0 auto 12px;border-radius:12px;background:#242019;display:grid;place-items:center;font-size:24px}
+.ccard a.big{display:block;font-weight:700;color:var(--acc);margin:6px 0 4px}
+.ccard p{font-size:13px;color:var(--mut)}
+footer{background:#0C0A08;border-top:1px solid var(--line);padding:48px 0 24px;margin-top:76px}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:32px;padding-bottom:28px;border-bottom:1px solid var(--line)}
+footer .logo{font-size:17px}
+footer p{font-size:13.5px;line-height:1.7;max-width:300px;margin-top:10px;color:var(--mut)}
+footer h5{color:var(--ink);font-size:12px;letter-spacing:.16em;text-transform:uppercase;margin-bottom:12px}
+footer ul{list-style:none}
+footer li{margin:8px 0;font-size:14px;color:var(--mut)}
+footer li:hover{color:var(--ink)}
+.foot-bottom{display:flex;justify-content:space-between;padding-top:20px;font-size:12.5px;flex-wrap:wrap;color:#6B665C}
+#overlay{position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:75;opacity:0;pointer-events:none;transition:.3s}
+#overlay.show{opacity:1;pointer-events:auto}
+#drawer{position:fixed;top:0;right:0;height:100dvh;width:min(430px,100vw);background:var(--card);z-index:80;transform:translateX(105%);transition:transform .38s cubic-bezier(.22,1,.36,1);display:flex;flex-direction:column;border-left:1px solid var(--line)}
+#drawer.open{transform:none}
+.drawer-head{display:flex;align-items:center;justify-content:space-between;padding:18px 20px;border-bottom:1px solid var(--line)}
+.drawer-head h3{font-size:19px;text-transform:uppercase}
+.x{width:36px;height:36px;border-radius:8px;background:#242019;font-size:15px;display:grid;place-items:center}
+#drawerBody{flex:1;overflow-y:auto;padding:6px 20px 20px}
+.drawer-foot{padding:16px 20px;border-top:1px solid var(--line)}
+.c-row{display:flex;gap:12px;padding:14px 0;border-bottom:1px solid var(--line)}
+.c-info{flex:1}
+.c-info b{font-size:14.5px;display:block;text-transform:uppercase}
+.c-sub{font-size:12px;color:var(--mut);display:block;margin-top:2px}
+.stepper{display:inline-flex;align-items:center;border:1.5px solid var(--line);border-radius:8px;margin-top:8px}
+.stepper button{width:28px;height:28px;font-size:16px;font-weight:700;color:var(--acc)}
+.stepper i{min-width:22px;text-align:center;font-style:normal;font-weight:600;font-size:13.5px}
+.c-line{font-weight:700;font-size:14.5px;white-space:nowrap;color:var(--acc)}
+.sum-row{display:flex;justify-content:space-between;font-size:14px;color:var(--mut);padding:3px 0}
+.sum-row.total{font-weight:700;color:var(--ink);font-size:16px;border-top:1px dashed var(--line);margin-top:6px;padding-top:10px}
+.free{color:var(--acc);font-weight:700}
+.tiny{font-size:12px;color:var(--mut);text-align:center;margin-top:8px}
+.empty{text-align:center;padding:40px 10px}
+.ck-form label{display:block;font-size:13px;font-weight:600;margin-bottom:14px}
+.ck-form input[type=text],.ck-form input[type=tel],.ck-form select,.ck-form textarea{width:100%;margin-top:6px;padding:12px 14px;border-radius:10px;border:1.5px solid var(--line);background:#14110E;color:var(--ink);font-family:inherit;font-size:14.5px;outline:none}
+.ck-form input:focus,.ck-form select:focus,.ck-form textarea:focus{border-color:var(--acc)}
+.bad{border-color:#DC2626!important}
+fieldset.pay{border:1.5px solid var(--line);border-radius:12px;padding:12px 14px;margin-bottom:14px}
+fieldset.pay legend{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--mut);padding:0 6px}
+.radio{display:flex;align-items:center;gap:10px;font-weight:500;font-size:14px;margin:8px 0}
+input[type=radio]{accent-color:var(--acc);width:17px;height:17px}
+.note{font-size:12.5px;color:var(--mut);margin-top:8px;line-height:1.5}
+.err{color:#FF5C33;font-weight:600;font-size:13px;min-height:18px;margin:2px 0 8px}
+.confirm{text-align:center;padding:10px 4px}
+.tick{width:64px;height:64px;margin:6px auto 14px;border-radius:50%;background:rgba(198,241,53,.12);color:var(--acc);display:grid;place-items:center;font-size:30px;font-weight:700}
+.ticket{margin:16px 0;background:#14110E;border:1px solid var(--line);border-radius:12px;padding:14px 16px;display:grid;grid-template-columns:1fr auto;gap:8px 12px;text-align:left;font-size:14px}
+.ticket span{color:var(--mut)}.ticket b{text-align:right}
+.mobile-bar{display:none;position:fixed;left:16px;right:16px;bottom:16px;z-index:60;background:var(--acc);color:#12100E;font-weight:700;font-size:15px;padding:15px;border-radius:12px;justify-content:center;gap:8px;box-shadow:0 0 34px -6px rgba(198,241,53,.55);text-transform:uppercase}
+@media(max-width:768px){body.cart-active:not(.drawer-open) .mobile-bar{display:flex}}
+#toast{position:fixed;left:50%;bottom:88px;transform:translateX(-50%) translateY(20px);background:var(--acc);color:#12100E;padding:12px 20px;border-radius:10px;font-weight:700;font-size:14px;opacity:0;pointer-events:none;transition:.3s;z-index:95;max-width:90vw;text-align:center}
+#toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+@media(max-width:900px){.hero .container,.visit-grid{grid-template-columns:1fr}.nav-links{display:none;position:absolute;top:70px;left:0;right:0;background:var(--card);flex-direction:column;padding:16px 22px;gap:14px;border-bottom:1px solid var(--line)}.nav-links.open{display:flex}.burger{display:grid}}
+@media(max-width:640px){section{padding:56px 0}.neon .big{font-size:92px}}
+</style>
+</head>
+<body>
+
+<div class="announce">🌶 Bao &amp; boxes ready in ~15 min · Collection only · No delivery, no compromise</div>
+
+<header id="hdr">
+  <div class="container">
+    <nav>
+      <a class="logo" href="#top">🌶 Bang <b>Bang</b></a>
+      <div class="nav-links" id="navLinks">
+        <a href="#combos">Combos</a><a href="#menu">Menu</a><a href="#visit">Find us</a><a href="#contact">Contact</a>
+      </div>
+      <div class="nav-actions">
+        <button class="cart-btn" onclick="openCart()" aria-label="Basket">🛒<span id="cartBadge" class="badge">0</span></button>
+        <button class="burger" onclick="document.getElementById('navLinks').classList.toggle('open')">☰</button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="container">
+    <div>
+      <span class="kicker">📍 Shoreditch · Kitchen Open Late</span>
+      <h1>Street food, <span>straight fire.</span></h1>
+      <p class="sub">Bao, boxes and skewers cooked fresh in an open kitchen. Pick your heat level, order online, and collect in about 15 minutes. No delivery — we only do it fresh.</p>
+      <div class="cta-row">
+        <a class="btn primary" href="#menu">Order now ↓</a>
+        <button class="btn ghost" onclick="openCart()">🛒 Your basket</button>
+      </div>
+      <span class="status" id="heroStatus"><i></i>Checking hours…</span>
+    </div>
+    <div class="neon">
+      <span class="big">🍜</span>
+      <span class="float f1">🥟</span><span class="float f2">🌶</span><span class="float f3">🍢</span><span class="float f4">🥢</span>
+    </div>
+  </div>
+</section>
+
+<section id="combos" style="padding-top:0">
+  <div class="container">
+    <div class="combo"><span class="em">🍱</span><div><h3>The Bang Bang Box</h3><p>Any street box + 2 bao + a drink. The full experience.</p></div><span class="pr">£15.90 · save £3</span></div>
+    <div class="combo"><span class="em">👯</span><div><h3>Feed Two Friends</h3><p>2 street boxes + 4 bao + 2 drinks + gyoza to share.</p></div><span class="pr">£29.50 · save £8</span></div>
+  </div>
+</section>
+
+<section id="menu">
+  <div class="container">
+    <div class="sec-head"><span class="eyebrow">The Menu</span><h2>Pick your heat 🔥</h2><p>Spicy dishes let you choose mild, medium or hot. Allergen info in-store — tell us at checkout.</p></div>
+    <div class="pills" id="pills">
+      <button class="pill active" data-cat="all">Full menu</button>
+      <button class="pill" data-cat="boxes">🍱 Street Boxes</button>
+      <button class="pill" data-cat="bao">🥟 Bao</button>
+      <button class="pill" data-cat="skewers">🍢 Skewers</button>
+      <button class="pill" data-cat="sides">Sides</button>
+      <button class="pill" data-cat="drinks">Drinks</button>
+    </div>
+    <div class="menu-grid" id="grid"></div>
+  </div>
+</section>
+
+<section id="visit">
+  <div class="container">
+    <div class="sec-head"><span class="eyebrow">Find us</span><h2>Location &amp; hours</h2></div>
+    <div class="visit-grid">
+      <div class="vcard">
+        <h3 style="margin-bottom:10px;text-transform:uppercase">Opening hours</h3>
+        <span class="status" id="statusPill" style="margin-bottom:12px"><i></i></span>
+        <div id="hoursList"></div>
+      </div>
+      <div class="map-wrap">
+        <iframe title="Map" src="https://www.openstreetmap.org/export/embed.html?bbox=-0.0840%2C51.5205%2C-0.0690%2C51.5285&amp;layer=mapnik&amp;marker=51.5246%2C-0.0766" loading="lazy"></iframe>
+        <div class="map-foot"><span>📍 5 Redchurch St, Shoreditch, E2 7DJ</span><a href="https://maps.google.com/?q=5+Redchurch+Street,+London+E2" target="_blank" rel="noopener">Directions →</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <div class="sec-head"><span class="eyebrow">Contact</span><h2>Get in touch</h2></div>
+    <div class="contact-grid">
+      <div class="ccard"><div class="ico">📞</div><h4 style="text-transform:uppercase;font-size:15px">Call us</h4><a class="big" href="tel:+442077290180">020 7729 0180</a><p>Daily during kitchen hours</p></div>
+      <div class="ccard"><div class="ico">✉️</div><h4 style="text-transform:uppercase;font-size:15px">Email us</h4><a class="big" href="mailto:yo@bangbangkitchen.co">yo@bangbangkitchen.co</a><p>Events &amp; bulk orders</p></div>
+      <div class="ccard"><div class="ico">📍</div><h4 style="text-transform:uppercase;font-size:15px">Collect from</h4><a class="big" href="https://maps.google.com/?q=5+Redchurch+Street,+London+E2" target="_blank" rel="noopener">5 Redchurch St, E2 7DJ</a><p>Shoreditch</p></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+      <div><a class="logo" href="#top">🌶 Bang <b>Bang</b></a><p>Asian street food cooked fresh to order in Shoreditch. Order online, pick your heat, collect hot.</p></div>
+      <div><h5>Links</h5><ul><li><a href="#combos">Combos</a></li><li><a href="#menu">Menu</a></li><li><a href="#visit">Find us</a></li><li><a href="#contact">Contact</a></li></ul></div>
+      <div><h5>Kitchen hours</h5><ul><li>Mon – Thu · 12:00 – 22:00</li><li>Fri – Sat · 12:00 – 23:00</li><li>Sunday · 13:00 – 21:00</li></ul></div>
+    </div>
+    <div class="foot-bottom"><span>© <span id="yy"></span> Bang Bang Street Kitchen</span><span>Made with 🌶 in Shoreditch</span></div>
+  </div>
+</footer>
+
+<div id="overlay" onclick="closeCart()"></div>
+<aside id="drawer">
+  <div class="drawer-head"><h3 id="drawerTitle">Your basket</h3><button class="x" onclick="closeCart()">✕</button></div>
+  <div id="drawerBody"></div>
+  <div class="drawer-foot" id="drawerFoot"></div>
+</aside>
+
+<button class="mobile-bar" onclick="openCart()">🛒 View basket · <span id="mbTotal">£0.00</span></button>
+<div id="toast" role="status"></div>
+
+<script>
+const SPICE=[{n:'Mild'},{n:'Medium'},{n:'Hot'}];
+const MENU=[
+ {id:'x1',cat:'boxes',name:'Chilli Chicken Rice',desc:'Crispy chicken, fluffy rice, burnt chilli oil, pickles.',price:10.50,emoji:'🍱',spicy:1},
+ {id:'x2',cat:'boxes',name:'Beef Udon',desc:'Thick udon, wok-tossed beef, black pepper sauce.',price:11.50,emoji:'🍜'},
+ {id:'x3',cat:'boxes',name:'Seoul Fried Chicken',desc:'Double-fried, gochujang glaze, sesame.',price:10.90,emoji:'🍗',spicy:1},
+ {id:'x4',cat:'boxes',name:'Vegan Pad Thai',desc:'Rice noodles, tamarind, peanuts, crispy tofu.',price:10.00,emoji:'🌱',spicy:1,vg:1},
+ {id:'x5',cat:'boxes',name:'Teriyaki Salmon',desc:'Grilled salmon, teriyaki glaze, sesame rice.',price:12.50,emoji:'🐟'},
+ {id:'x6',cat:'boxes',name:'Dan Dan Noodles',desc:'Sichuan minced pork, chilli oil, crushed peanuts.',price:10.90,emoji:'🍜',spicy:1},
+ {id:'b1',cat:'bao',name:'Pork Belly Bao',desc:'Slow-braised belly, hoisin, pickled cucumber.',price:6.50,emoji:'🥟'},
+ {id:'b2',cat:'bao',name:'Crispy Chicken Bao',desc:'Buttermilk chicken, slaw, bang bang mayo.',price:6.00,emoji:'🥟'},
+ {id:'b3',cat:'bao',name:'Tofu Katsu Bao',desc:'Panko tofu, katsu sauce, spring onion.',price:5.80,emoji:'🥟',vg:1},
+ {id:'b4',cat:'bao',name:'Prawn Tempura Bao',desc:'Crispy prawn, yuzu mayo, shiso.',price:6.90,emoji:'🥟'},
+ {id:'s1',cat:'skewers',name:'Chicken Yakitori',desc:'Charcoal-grilled, tare glaze, sea salt.',price:3.50,emoji:'🍢'},
+ {id:'s2',cat:'skewers',name:'Chilli Prawn Skewer',desc:'Grilled prawns, hot chilli-lime butter.',price:4.00,emoji:'🍢',spicy:1},
+ {id:'s3',cat:'skewers',name:'Halloumi Skewer',desc:'Grilled halloumi, teriyaki, sesame.',price:3.80,emoji:'🍢',vg:1},
+ {id:'d1',cat:'sides',name:'Gyoza (x5)',desc:'Pan-fried pork &amp; chive, black vinegar dip.',price:6.00,emoji:'🥟'},
+ {id:'d2',cat:'sides',name:'Kimchi',desc:'House-made, properly fermented, properly hot.',price:3.50,emoji:'🥬',spicy:1,vg:1},
+ {id:'d3',cat:'sides',name:'Edamame',desc:'Steamed with chilli salt.',price:4.00,emoji:'🫛',vg:1},
+ {id:'d4',cat:'sides',name:'Sriracha Fries',desc:'Crispy fries, sriracha mayo, spring onion.',price:4.50,emoji:'🍟',spicy:1,vg:1},
+ {id:'k1',cat:'drinks',name:'Lychee Lemonade',desc:'Fresh lemonade with lychee &amp; mint.',price:4.00,emoji:'🍸',vg:1},
+ {id:'k2',cat:'drinks',name:'Yuzu Soda',desc:'Japanese citrus soda over ice.',price:3.80,emoji:'🍋',vg:1},
+ {id:'k3',cat:'drinks',name:'Thai Iced Tea',desc:'Sweet, spiced, ultra creamy.',price:4.20,emoji:'🧋'},
+ {id:'k4',cat:'drinks',name:'Sapporo',desc:'Classic Japanese lager, ice cold.',price:5.00,emoji:'🍺'}
+];
+const HOURS=[{d:'Monday',o:12,c:22},{d:'Tuesday',o:12,c:22},{d:'Wednesday',o:12,c:22},{d:'Thursday',o:12,c:22},{d:'Friday',o:12,c:23},{d:'Saturday',o:12,c:23},{d:'Sunday',o:13,c:21}];
+let cart={};try{cart=JSON.parse(localStorage.getItem('bg_cart'))||{}}catch(e){cart={}}
+let activeCat='all';
+const f2=n=>'£'+n.toFixed(2);
+function persist(){try{localStorage.setItem('bg_cart',JSON.stringify(cart))}catch(e){}}
+function cartItems(){return Object.values(cart)}
+function countItems(){return cartItems().reduce((a,i)=>a+i.qty,0)}
+function subtotal(){return cartItems().reduce((a,i)=>a+i.price*i.qty,0)}
+function toast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');clearTimeout(toast._t);toast._t=setTimeout(()=>t.classList.remove('show'),2200)}
+function fmtHour(h){const ap=h<12?'AM':'PM';return (h%12||12)+':00 '+ap}
+function fmtTime(d){let h=d.getHours();const m=d.getMinutes(),ap=h<12?'AM':'PM';h=h%12||12;return h+':'+String(m).padStart(2,'0')+' '+ap}
+
+function cardHTML(m){
+ const tags=(m.vg?'<span class="tag vg">Vegan</span>':'')+(m.spicy?'<span class="tag">🔥 Spicy</span>':'');
+ const spiceSel=m.spicy?`<div class="spice" id="sp_${m.id}">${SPICE.map((s,i)=>`<button class="${i===1?'on':''}" onclick="pickSpice('${m.id}',${i})">🌶 ${s.n}</button>`).join('')}</div>`:'';
+ const btn=m.spicy
+  ?`<button class="add" onclick="addSpicy('${m.id}')">Add to basket</button>`
+  :`<button class="add" onclick="addToCart('${m.id}')">Add to basket</button>`;
+ return `<article class="dish"><div class="dish-top"><h4>${m.name}</h4><span class="price">£${m.price.toFixed(2)}</span></div><p class="dish-desc">${m.desc}</p><div>${tags}</div>${spiceSel}${btn}</article>`;
+}
+function renderMenu(){
+ const items=MENU.filter(m=>activeCat==='all'||m.cat===activeCat);
+ document.getElementById('grid').innerHTML=items.map(cardHTML).join('');
+}
+function pickSpice(id,i){
+ const el=document.getElementById('sp_'+id);
+ [...el.children].forEach((b,j)=>b.classList.toggle('on',j===i));
+}
+function addSpicy(id){
+ const m=MENU.find(x=>x.id===id);
+ const idx=[...document.getElementById('sp_'+id).children].findIndex(b=>b.classList.contains('on'));
+ const sp=SPICE[idx||1].n;
+ const key=id+'|'+sp;
+ if(!cart[key])cart[key]={key,name:m.name+' ('+sp+')',price:m.price,emoji:m.emoji,qty:0};
+ cart[key].qty++;persist();updateBadge();toast('✓ '+m.name+' ('+sp+') added');
+}
+function addToCart(id){
+ const m=MENU.find(x=>x.id===id);
+ if(!cart[id])cart[id]={key:id,name:m.name,price:m.price,emoji:m.emoji,qty:0};
+ cart[id].qty++;persist();updateBadge();toast('✓ '+m.name+' added');
+}
+function changeQty(k,d){if(!cart[k])return;cart[k].qty+=d;if(cart[k].qty<=0)delete cart[k];persist();updateBadge();renderCart()}
+function updateBadge(){const n=countItems(),b=document.getElementById('cartBadge');b.textContent=n;b.style.display=n?'grid':'none';document.body.classList.toggle('cart-active',n>0);document.getElementById('mbTotal').textContent=f2(subtotal())}
+function openCart(){renderCart();document.getElementById('drawer').classList.add('open');document.getElementById('overlay').classList.add('show');document.body.classList.add('drawer-open')}
+function closeCart(){document.getElementById('drawer').classList.remove('open');document.getElementById('overlay').classList.remove('show');document.body.classList.remove('drawer-open')}
+
+function renderCart(){
+ const body=document.getElementById('drawerBody'),foot=document.getElementById('drawerFoot'),items=cartItems();
+ if(!items.length){body.innerHTML='<div class="empty"><p style="font-size:52px">🍜</p><h4 style="font-size:19px;text-transform:uppercase;margin:8px 0">Basket is empty</h4><p style="color:var(--mut);font-size:14px;margin-bottom:18px">Get some bao in your life.</p><button class="btn primary" onclick="closeCart()">Browse the menu</button></div>';foot.innerHTML='';return}
+ body.innerHTML=items.map(m=>`<div class="c-row"><div style="font-size:26px;width:44px;text-align:center">${m.emoji}</div><div class="c-info"><b>${m.name}</b>${m.sub?`<span class="c-sub">${m.sub}</span>`:''}<div class="stepper"><button onclick="changeQty('${encodeURIComponent(m.key)}',-1)">−</button><i>${m.qty}</i><button onclick="changeQty('${encodeURIComponent(m.key)}',1)">+</button></div></div><div class="c-line">${f2(m.price*m.qty)}</div></div>`).join('');
+ const s=subtotal();
+ foot.innerHTML=`<div class="sum-row"><span>Subtotal</span><span>${f2(s)}</span></div><div class="sum-row"><span>Collection</span><span class="free">FREE</span></div><div class="sum-row total"><span>Total</span><span>${f2(s)}</span></div><button class="btn primary big" onclick="renderCheckout()">Checkout · collection order</button><p class="tiny">Collect from 5 Redchurch St · ready in ~15 min</p>`;
+}
+
+function buildSlots(){
+ const out=[{v:'asap',l:'ASAP · ready in ~15 min'}];const t=new Date();
+ t.setMinutes(Math.ceil((t.getMinutes()+1)/15)*15,0,0);t.setMinutes(t.getMinutes()+15);
+ for(let i=0;i<7;i++){out.push({v:t.getTime(),l:'Today, '+fmtTime(t)});t.setMinutes(t.getMinutes()+15)}return out;
+}
+function renderCheckout(){
+ document.getElementById('drawerTitle').textContent='Collection details';const s=subtotal();
+ document.getElementById('drawerBody').innerHTML=`
+  <form id="ckForm" onsubmit="placeOrder(event)">
+   <label>Your name *<input id="ckName" type="text" placeholder="Jane Smith"></label>
+   <label>Phone number *<input id="ckPhone" type="tel" placeholder="07123 456789"></label>
+   <label>Collection time *<select id="ckSlot">${buildSlots().map(x=>`<option value="${x.v}">${x.l}</option>`).join('')}</select></label>
+   <fieldset class="pay"><legend>Payment</legend>
+    <label class="radio"><input type="radio" name="pay" value="Cash" checked>💵 Cash on collection</label>
+    <label class="radio"><input type="radio" name="pay" value="Card">💳 Card on collection</label>
+    <p class="note">🔒 Online payment (Stripe) coming soon — Stage 2.</p>
+   </fieldset>
+   <label>Order notes (optional)<textarea id="ckNotes" rows="2" placeholder="Allergy info, extra chilli…"></textarea></label>
+   <div class="sum-row"><span>${countItems()} item(s)</span><span>${f2(s)}</span></div>
+   <div class="sum-row total"><span>Total</span><span>${f2(s)}</span></div>
+   <p class="err" id="ckErr"></p>
+  </form>`;
+ document.getElementById('drawerFoot').innerHTML=`<button class="btn primary big" type="submit" form="ckForm">Place order · ${f2(s)}</button><button class="btn ghost big" onclick="renderCart()">← Back to basket</button>`;
+}
+function placeOrder(e){
+ e.preventDefault();
+ const n=document.getElementById('ckName'),p=document.getElementById('ckPhone'),err=document.getElementById('ckErr');
+ n.classList.remove('bad');p.classList.remove('bad');
+ if(!n.value.trim()||!p.value.trim()){err.textContent='Please add your name and phone number.';if(!n.value.trim())n.classList.add('bad');if(!p.value.trim())p.classList.add('bad');return}
+ const o={no:'BBK-'+Math.floor(1000+Math.random()*9000),name:n.value.trim(),slot:document.getElementById('ckSlot').selectedOptions[0].text,pay:document.querySelector('input[name=pay]:checked').value,total:subtotal()};
+ cart={};persist();updateBadge();renderConfirm(o);
+}
+function renderConfirm(o){
+ document.getElementById('drawerTitle').textContent='Order confirmed';
+ document.getElementById('drawerBody').innerHTML=`<div class="confirm"><div class="tick">✓</div><h4 style="font-size:24px;text-transform:uppercase">Let\'s eat, ${o.name}!</h4><p style="color:var(--mut);font-size:14px;margin-top:6px">The woks are on 🔥</p>
+  <div class="ticket"><span>Order number</span><b>${o.no}</b><span>Collect at</span><b>${o.slot}</b><span>Payment</span><b>${o.pay} on collection</b><span>Total</span><b>${f2(o.total)}</b></div>
+  <p class="note">Show your order number at the counter.<br>Questions? <a href="tel:+442077290180" style="color:var(--acc);font-weight:700">020 7729 0180</a></p></div>`;
+ document.getElementById('drawerFoot').innerHTML='<button class="btn primary big" onclick="closeCart()">Done — back to menu</button>';
+}
+
+function openStatus(){
+ const idx=(new Date().getDay()+6)%7,h=HOURS[idx],t=new Date().getHours()+new Date().getMinutes()/60;
+ if(t>=h.o&&t<h.c)return{open:true,label:'Open now · closes '+fmtHour(h.c)};
+ if(t<h.o)return{open:false,label:'Closed · opens '+fmtHour(h.o)+' today'};
+ return{open:false,label:'Closed · opens '+fmtHour(HOURS[(idx+1)%7].o)+' tomorrow'};
+}
+function renderHours(){
+ const today=(new Date().getDay()+6)%7;
+ document.getElementById('hoursList').innerHTML=HOURS.map((h,i)=>`<div class="hrow ${i===today?'today':''}"><span>${h.d}</span><i></i><b>${fmtHour(h.o)} – ${fmtHour(h.c)}</b></div>`).join('');
+ const st=openStatus(),p=document.getElementById('statusPill');
+ p.innerHTML='<i></i>'+st.label;p.classList.add(st.open?'open':'closed');
+ const hp=document.getElementById('heroStatus');hp.innerHTML='<i></i>'+st.label;hp.classList.add(st.open?'open':'closed');
+}
+
+document.querySelectorAll('#pills .pill').forEach(p=>p.addEventListener('click',()=>{document.querySelectorAll('#pills .pill').forEach(x=>x.classList.remove('active'));p.classList.add('active');activeCat=p.dataset.cat;renderMenu()}));
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeCart()});
+window.addEventListener('scroll',()=>document.getElementById('hdr').classList.toggle('scrolled',scrollY>10));
+renderMenu();renderHours();updateBadge();
+document.getElementById('yy').textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
